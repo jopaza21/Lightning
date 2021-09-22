@@ -1,25 +1,20 @@
-int x = 0;
-int y = 200;
+int x;
+int y;
 int newx;
 int newy;
-boolean slash = false;
+boolean conjure = false;
 
 void setup() {
   size(400,400);
 }
 void draw() {
-  if(slash == true){
-    newx = x + ((int)(Math.random()*10));
-    newy = y + ((int)(Math.random()*20 - 10));
-    line(x,y,newx,newy);
-    x = newx;
-    y = newy;
-    if(x >= mouseX + 10){
-      slash = false;
-    }
+  if(conjure == true){
+    x = (int)(Math.random() * 250) + 50;
+    conjure = false;
   }
+  
 }
 
-void mouseClicked() {
-  slash = true;
+void mousePressed() {
+  conjure = true;
 }
