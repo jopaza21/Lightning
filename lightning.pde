@@ -1,28 +1,42 @@
-int x = (int)(Math.random() * 250 + 50);
-int y;
-int newx;
-int newy;
-boolean conjure = false;
+int x = (int)(Math.random() * 250 + 75);
+int y = 80;
+int endx = 0;
+int endy = 0;
+boolean paint = false;
 
 void setup() {
   size(400,400);
+  //canvas
+  rect(75,75,250,200);
+  noStroke();
 }
+
 void draw() {
-  if(mouseY > y){
-    if(mouseX >= x){
-      newx = x + (int)(Math.random() * 16 - 6);
+  fill(255,255,0);
+  if(paint == true){
+    if(x >= 310){
+      endx = x + (int)(Math.random()*6 - 4);
+    } else if (x <= 90){
+      endx = x + (int)(Math.random()*6 - 2);
+    } else {
+      endx = x + (int)(Math.random()*6 - 3);
     }
-    if(mouseX <= x){
-      newx = x + (int)(Math.random() * 16 - 10);
+    endy = y + (int)(Math.random()*4);
+    ellipse(endx,endy,8,8);
+    x = endx;
+    y = endy;
+    if(y > 269){
+      paint = false;
     }
-  } else {
-    newx = x + (int)(Math.random() * 16 - 8);
   }
-  newy = y + (int)(Math.random()*5);
-  line(x,y,newx,newy);
-  x = newx;
-  y = newy;
+  if(mousePressed == true){
+    paint = true;
+  }
 }
 
 void mousePressed() {
+  x = (int)(Math.random() * 250 + 75);
+  y = 80;
+  endx = 0;
+  endy = 0;
 }
